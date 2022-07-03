@@ -1,9 +1,25 @@
-import React from 'react'
+import React , {useState}from 'react'
 import '../Styles/Tabla.css'
 
 function Tabla() {
+
+    const resultado = []
+
+    function refresh(e){
+        e.preventDefault()
+        const usuarios = localStorage.getItem("usuarios")
+                for(var i in usuarios)
+                resultado.push([i, usuarios [i]]);
+
+            console.log(resultado)
+
+    }
+
+
+
     return (
         <div className="contenedor3">
+            <button onClick={refresh}>Refresh</button>
             <table>
                 <thead>
                     <tr>

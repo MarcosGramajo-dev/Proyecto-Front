@@ -5,13 +5,13 @@ function Socio() {
     return (
         <div className="contenedor">
             <form className="formulario">
-                <label for="nombreSocio">Nombre de socio</label>
+                <label htmlFor="nombreSocio">Nombre de socio</label>
                 <input id="nombreSocio" name="nombreSocio"></input>
 
-                <label for="libro">Titulo del Libro</label>
+                <label htmlFor="libro">Titulo del Libro</label>
                 <input id="libro" name="libro"></input>
 
-                <label for="date1">Fecha de Devolucion</label>
+                <label htmlFor="date1">Fecha de Devolucion</label>
                 <input id="date1" name="date1" type="date" className="date"></input>
 
                 <input type="submit" value="Agregar" ></input>
