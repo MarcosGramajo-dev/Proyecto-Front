@@ -7,6 +7,8 @@ export default function NuevoUsuario(props){
 
     const [usuario, setUsuario] = useState({})
 
+    let [className, setClassName] = useState("formulario-desactive")
+
     function handleForm(e){
 
         setUsuario(
@@ -19,17 +21,17 @@ export default function NuevoUsuario(props){
     function cargar(e){
 
         e.preventDefault();
-    
+
         let dataDBArray = [...props.usuarios]
         dataDBArray.push(usuario)
-        console.log(dataDBArray);
+
         localStorage.setItem( "usuarios" , JSON.stringify(dataDBArray))
         props.addUser(dataDBArray)
 
         visible(e);
     }
 
-    let [className, setClassName] = useState("formulario-desactive")
+
     
     function visible(e){
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React , {useState}from 'react'
 import '../Styles/Tabla.css'
 
 function Tabla(props) {
@@ -33,7 +33,41 @@ function Tabla(props) {
     <path d="M31.25 14.2578C31.25 14.2578 33.6289 13.0859 25 13.0859C21.9097 13.0859 18.8887 14.0023 16.3192 15.7192C13.7497 17.4361 11.747 19.8764 10.5644 22.7315C9.38177 25.5866 9.07234 28.7283 9.67524 31.7592C10.2781 34.7902 11.7663 37.5743 13.9515 39.7595C16.1367 41.9447 18.9208 43.4328 21.9517 44.0357C24.9827 44.6386 28.1243 44.3292 30.9794 43.1466C33.8345 41.9639 36.2748 39.9612 37.9917 37.3917C39.7086 34.8222 40.625 31.8013 40.625 28.7109" stroke="black" strokeWidth="2" strokeMiterlimit="10" strokeLinejoin="square"/>
     <path d="M25 5.66406L32.8125 13.4766L25 21.2891" stroke="black" strokeWidth="2" strokeMiterlimit="10" strokeLinecap="square"/>
     </svg>
+
+    let [classNameEliminar, setClassNameEliminar] = useState("conteiner-modal-delete-oculto")
+
+    let [classNameSubmit, setClassNameSubmit] = useState("conteiner-modal-submit-oculto")
+
+    function eliminar(e) {
+        e.preventDefault();
+
+        console.log("elimina")
+
+        if(classNameEliminar === "conteiner-modal-delete"){
+            setClassNameEliminar("conteiner-modal-delete-oculto")
+        }
+
+        else{
+            setClassNameEliminar("conteiner-modal-delete")
+        }
+    }
     
+
+    function cargar(){
+
+        setClassNameEliminar("conteiner-modal-delete-oculto")
+        if(classNameSubmit === "conteiner-modal-submit"){
+            setClassNameSubmit("conteiner-modal-submit-oculto")
+        }
+
+        else{
+            setClassNameSubmit("conteiner-modal-submit")
+
+            setTimeout(function() {
+                setClassNameSubmit("conteiner-modal-submit-oculto")      
+            }, 500);
+        }
+    }
     
     
     
@@ -43,13 +77,13 @@ function Tabla(props) {
             <table>
                 <thead>
                     <tr>
-                            <td>Nombre y Apellido</td>
-                            <td>Telefono</td>
-                            <td>Direccion</td>
-                            <td>Titulo del Libro</td>
-                            <td>Fecha de Devolucion</td>
-                            <th></th>
-                            <th></th>
+                        <td>Nombre y Apellido</td>
+                        <td className="telefono">Telefono</td>
+                        <td>Direccion</td>
+                        <td>Titulo del Libro</td>
+                        <td>Fecha de Devolucion</td>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,92 +91,92 @@ function Tabla(props) {
                     {props.usuarios.map((user) => (
                     <tr>
                         <td> {user.nombre} </td>
-                        <td> {user.telefono} </td>
-                        <td> {user.telefono} </td>
+                        <td className="telefono"> {user.telefono} </td>
                         <td> {user.direccion} </td>
                         <td> {user.libro} </td>
+                        <td> {user.date} </td>
                         <th><div className="editar">{svgEdit}</div></th>
-                        <th><div className="eliminar">{svgDelete}</div></th>
+                        <th><div className="eliminar" onClick={eliminar}>{svgDelete}</div></th>
                     </tr>
                         ))}
                     <tr className="impar">
                             <td>Nombre y Apellido</td>
-                            <td>Telefono</td>
+                            <td className="telefono">Telefono</td>
                             <td>Direccion</td>
                             <td>Titulo del Libro</td>
                             <td>Fecha de Devolucion</td>
                             <th><div className="editar">{svgEdit}</div></th>
-                            <th><div className="eliminar">{svgDelete}</div></th>
+                            <th><div className="eliminar" onClick={eliminar}>{svgDelete}</div></th>
                     </tr>
 
                     <tr className="par">
                             <td>Nombre y Apellido</td>
-                            <td>Telefono</td>
+                            <td className="telefono">Telefono</td>
                             <td>Direccion</td>
                             <td>Titulo del Libro</td>
                             <td>Fecha de Devolucion</td>
                             <th><div className="editar">{svgEdit}</div></th>
-                            <th><div className="eliminar">{svgDelete}</div></th>
+                            <th><div className="eliminar" onClick={eliminar}>{svgDelete}</div></th>
                     </tr>
 
                     <tr className="impar">
                             <td>Nombre y Apellido</td>
-                            <td>Telefono</td>
+                            <td className="telefono">Telefono</td>
                             <td>Direccion</td>
                             <td>Titulo del Libro</td>
                             <td>Fecha de Devolucion</td>
                             <th><div className="editar">{svgEdit}</div></th>
-                            <th><div className="eliminar">{svgDelete}</div></th>
+                            <th><div className="eliminar" onClick={eliminar}>{svgDelete}</div></th>
                     </tr>
 
                     <tr className="par">
                             <td>Nombre y Apellido</td>
-                            <td>Telefono</td>
+                            <td className="telefono">Telefono</td>
                             <td>Direccion</td>
                             <td>Titulo del Libro</td>
                             <td>Fecha de Devolucion</td>
                             <th><div className="editar">{svgEdit}</div></th>
-                            <th><div className="eliminar">{svgDelete}</div></th>
+                            <th><div className="eliminar" onClick={eliminar}>{svgDelete}</div></th>
                     </tr>
 
                     <tr className="impar">
                             <td>Nombre y Apellido</td>
-                            <td>Telefono</td>
+                            <td className="telefono">Telefono</td>
                             <td>Direccion</td>
                             <td>Titulo del Libro</td>
                             <td>Fecha de Devolucion</td>
                             <th><div className="editar">{svgEdit}</div></th>
-                            <th><div className="eliminar">{svgDelete}</div></th>
+                            <th><div className="eliminar" onClick={eliminar}>{svgDelete}</div></th>
                     </tr>
 
                     <tr className="par">
                             <td>Nombre y Apellido</td>
-                            <td>Telefono</td>
+                            <td className="telefono">Telefono</td>
                             <td>Direccion</td>
                             <td>Titulo del Libro</td>
                             <td>Fecha de Devolucion</td>
                             <th><div className="editar">{svgEdit}</div></th>
-                            <th><div className="eliminar">{svgDelete}</div></th>
+                            <th><div className="eliminar" onClick={eliminar}>{svgDelete}</div></th>
                     </tr>
 
                 </tbody>
             </table>
 
-            <div className="conteiner-modal-delete">
+            <div className={classNameEliminar}>
                 <div className="modal-delete">
                     <div className="img-alert">{svgAlert}</div>
                     <h4>¿Está seguro de que quiere eliminar?</h4>
                     <div>
-                        <button className="button-cancelar">Cancelar</button>
-                        <button className="button-eliminar">Eliminar</button>
+                        <button className="button-cancelar" onClick={eliminar}>Cancelar</button>
+                        <button className="button-eliminar" onClick={cargar}>Eliminar</button>
                     </div>
                 </div>
             </div>
 
-            <div className="conteiner-modal-submit">
+            <div className={classNameSubmit}>
                 <div className="modal-submit">
                     <div className="img-submit">{svgSubmit}</div>
-                    <h4>¿Está seguro de que quiere eliminar?</h4>
+                    <h4>Cargando Cambios</h4>
                 </div>
             </div>
         </div>

@@ -8,11 +8,29 @@ table{
     border-collapse: collapse;
     width: 800px;
     height: 300px;
+
 }
 
 thead{
     color: #fff;
     font-weight: bold;
+}
+
+tbody{
+    display: block;
+    overflow-y: scroll;
+    height: 500px;
+}
+
+tbody::-webkit-scrollbar{
+    width: 7px;
+    margin: 0 5px;
+}
+
+tbody::-webkit-scrollbar-thumb{
+    background-color: #2478B5;
+    border-radius: 10px;
+
 }
 
 table thead tr{
@@ -28,9 +46,11 @@ table thead th{
 }
 
 table td{
-    padding: 5px;
-    height: 25px;
+    padding: 5px 10px;
+    height: auto;
     margin: auto;
+    width: 180px;
+    word-wrap: break-word;
 }
 
 table th{
@@ -42,19 +62,15 @@ table th{
 tbody tr{
     display: flex;
     margin-bottom: 5px;
+    background-color: #c5c4c4;
+    border-radius: 10px;
 }
 
-tbody .par{
+tbody tr:nth-child(odd){
     background-color: #5067B1;
     border-radius: 10px;
     color: #fff;
 
-}
-
-tbody .impar{
-    background-color: #c5c4c4;
-    border-radius: 10px;
-    color: #000;
 }
 
 
@@ -105,6 +121,9 @@ tbody .impar{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.conteiner-modal-delete-oculto{
     display: none;
 }
 
@@ -118,10 +137,6 @@ tbody .impar{
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-}
-
-.button-cancelar{
-    
 }
 
 .button-cancelar{
@@ -175,6 +190,9 @@ tbody .impar{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.conteiner-modal-submit-oculto{
     display: none;
 }
 
@@ -206,4 +224,48 @@ tbody .impar{
         -webkit-transform: rotate(360deg); 
         transform:rotate(360deg); 
     } 
+}
+
+.telefono{
+    width: 100px;
+}
+
+@media (max-width: 1050px) {
+    *{
+        font-size: 15px;
+    }
+
+    .body{
+        width: 800px;
+    }
+
+    table td{
+        width: 100px;
+    }
+
+    thead th{
+        width: 70px;
+    }
+
+    .contenedor3{
+        width: 100%;
+    }
+
+    table{
+        border-collapse: collapse;
+        width: 100%;
+        height: 300px;
+    
+    }
+    
+    thead{
+        color: #fff;
+        font-weight: bold;
+    }
+    
+    tbody{
+        display: block;
+        overflow-y: scroll;
+        height: 500px;
+    }
 }

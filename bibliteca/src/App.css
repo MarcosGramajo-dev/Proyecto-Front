@@ -4,11 +4,16 @@
 }
 
 .body{
-  width: 800px;
+  width: 1000px;
   margin: auto;
 }
 
 .contenedor2{
   display: flex;
   justify-content: flex-end;
+}
+
+.contenedor3{
+  display: flex;
+  justify-content: center;
 }

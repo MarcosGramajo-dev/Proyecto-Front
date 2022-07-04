@@ -9,14 +9,12 @@ import Tabla from './components/Tabla'
 function App() {
 
   let [usuarios, setUsuario] = useState([]);
-
+  const [datos, setDatos] = useState({})
 
         
   useEffect(() =>{
       const localStorageData = localStorage.getItem("usuarios")
       localStorageData && setUsuario( JSON.parse( localStorageData))
-
-
   },[])
 
   return (
