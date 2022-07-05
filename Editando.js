@@ -23,12 +23,12 @@ function navegandoPa(e){
                                 <input className="input" id="nombre" value={cambios.nombre} name="nombre" onChange={navegandoPa} ></input>
                                 <br/>
 
-                                <label htmlFor="telefono">Telefono</label>
-                                <input className="input" id="telefono" value={cambios.telefono} name="telefono"onChange={navegandoPa} ></input>
+                                <label htmlFor="telefono">Telefono</label>  
+                                <input className="input" id="telefono" value={cambios.tel} name="tel"onChange={navegandoPa} ></input>
                                 <br/>
 
                                 <label htmlFor="direccion">Direccion</label>
-                                <input className="input" id="direccion" value={cambios.direccion} name="direccion" onChange={navegandoPa}></input>
+                                <input className="input" id="direccion" value={cambios.dir} name="dir" onChange={navegandoPa}></input>
                                 <br/>
 
                                 <label htmlFor="libro">Titulo del Libro</label>
@@ -36,7 +36,7 @@ function navegandoPa(e){
                                 <br/>
 
                                 <label htmlFor="date">Fecha de Devolucion</label>
-                                <input className="input date" id="date" value={cambios.date} name="date" type="date"onChange={navegandoPa} ></input>
+                                <input className="input date" id="date" value={cambios.fecha} name="fecha" type="date" onChange={navegandoPa} ></input>
                                 <br/>
 
                                 <input className="input-button" type="submit" value="Guardar"></input>

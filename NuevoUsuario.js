@@ -5,37 +5,28 @@ import '../Styles/NuevoUsuario.css'
 
 export default function NuevoUsuario({ id, addUser}){ 
     
-    const [usuario, setUsuario] = useState({})
-    const [sim, setSim] = useState(true)
     const [className, setClassName] = useState("formulario-active")
 
-  /*   const vacio = {
-        nombre:'',
-        telefono:'',
-        direccion:'',
-        libro:'',
-        date:''
-    } */
 
-    function handleForm(e){
+            const [nombre, setNombre] = useState('')
+            const [tel, setTel] = useState('')
+            const [dir, setDir] = useState('')
+            const [libro, setLibro] = useState('')
+            const [socio, setSocio] = useState(false)
+            const [fecha, setFecha] = useState(null)
 
-        setUsuario(
-            {...usuario,
-            id: id, 
-            socio : e.target.checked, //revisando inputs
-            [e.target.name] : e.target.value
-            }//agregar aqui el estado de edit??  se puede agregar afuera y elegir el item por ID
-        )
+    function enviarDatos(e){
+        e.preventDefault()
+        const paquete = { id, nombre, tel, dir, libro, socio, fecha}//VALIDAR
+        addUser(paquete)
+        setNombre('')
+        setTel('')
+        setDir('')
+        setLibro('')
+        setSocio(false)
+        setFecha(null)        
     }
-    
-    /* function limpiar(){
-        setUsuario(vacio)
-    } */
 
-    function enviar(e){
-        e.preventDefault();
-        addUser(usuario)
-    }
 
     function visible(e){
 
@@ -52,7 +43,7 @@ export default function NuevoUsuario({ id, addUser}){
         return(
             <div className="contenedor">
 
-                        <form className={className} onSubmit={enviar}>
+                        <form className={className} onSubmit={enviarDatos}>
                             <div>
                                 
                                 <button className="close-2" onClick={visible}>X</button>
@@ -60,29 +51,29 @@ export default function NuevoUsuario({ id, addUser}){
                                 <h3>CARGAR PRESTAMOS DE USUARIO</h3>
 
                                 <label htmlFor="nombre">Nombre y Apellido</label>
-                                <input className="input" id="nombre" name="nombre" onChange={handleForm} required></input>
+                                <input className="input" id="nombre" value={nombre} name="nombre" onChange={(e) => setNombre(e.target.value)} ></input>
                                 <br/>
 
                                 <label htmlFor="telefono">Telefono</label>
-                                <input className="input" id="telefono" name="telefono" onChange={handleForm} required></input>
+                                <input className="input" id="telefono" name="telefono" value={tel} onChange={(e) => setTel(e.target.value)} ></input>
                                 <br/>
 
                                 <label htmlFor="direccion">Direccion</label>
-                                <input className="input" id="direccion" name="direccion" onChange={handleForm} required></input>
+                                <input className="input" id="direccion" name="direccion" value={dir} onChange={(e) => setDir(e.target.value)} ></input>
                                 <br/>
 
                                 <label htmlFor="libro">Titulo del Libro</label>
-                                <input className="input" id="libro" name="libro" onChange={handleForm} required></input>
+                                <input className="input" id="libro" name="libro" value={libro} onChange={(e) => setLibro(e.target.value)} ></input>
                                 <br/>
 
                                 <label htmlFor="socio">¿Socio?</label>
-                                <input className="input" type="checkbox" id="socio" name="socio"  onChange={handleForm}></input>
+                                <input className="input" type="checkbox" id="socio" name="socio" value={socio} checked={socio}  onChange={(e) => setSocio(!socio)}></input>
                                 <br/>
 
 
 
                                 <label htmlFor="date">Fecha de Devolucion</label>
-                                <input className="input date" id="date" name="date" type="date" onChange={handleForm} required></input>
+                                <input className="input date" id="date" name="fecha" type="date" onChange={(e) => setFecha(e.target.value)} ></input>
                                 <br/>
 
                                 <input className="input-button" type="submit" value="Agregar"></input>
