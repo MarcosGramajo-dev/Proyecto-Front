@@ -24,6 +24,7 @@ function visible(e){
     setClassName("formulario-active")
   }
 }
+
    
     return(
         <div className="contenedor">

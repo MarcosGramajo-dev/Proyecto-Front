@@ -264,6 +264,7 @@ tbody tr:nth-child(odd){
     }
 }
 
+
 @media (max-width: 500px){
     .eliminar{
         width: 18px;

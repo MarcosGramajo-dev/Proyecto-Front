@@ -47,4 +47,5 @@ function dataBase() {
         localStorage.setItem("socios", JSON.stringify(sociosDB))
     }
 
+    
     }

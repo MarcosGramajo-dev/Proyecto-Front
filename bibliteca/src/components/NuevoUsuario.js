@@ -77,3 +77,4 @@ export default function NuevoUsuario({ id, addUser}){
             </div>
         );
     }
+    

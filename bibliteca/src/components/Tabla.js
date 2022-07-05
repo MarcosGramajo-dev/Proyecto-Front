@@ -74,5 +74,6 @@ export default function Tabla({usuarios, editando, borrar}) {
     </div>
 
     );
+    
   }
   
