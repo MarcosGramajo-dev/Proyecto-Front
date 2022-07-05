@@ -36,10 +36,6 @@ export default function Tabla({usuarios, editando, borrar}) {
     </svg>
     
 
-
-    //agregar estado = true ??? ---> muestre el cargar usuario con los datos
-
-
     return (
         <div className="contenedor3">
             <table>
@@ -57,12 +53,12 @@ export default function Tabla({usuarios, editando, borrar}) {
                 <tbody>
 
                     {usuarios.map((user) => (
-                    <tr key={user.id}>
+                    <tr key={crypto.randomUUID()}>
                         <td> {user.nombre} </td>
-                        <td> {user.telefono} </td>
-                        <td> {user.direccion} </td>
+                        <td> {user.tel} </td>
+                        <td> {user.dir} </td>
                         <td> {user.libro} </td>
-                        <td> {user.date} </td>
+                        <td> {user.fecha} </td>
                         <th><div className="editar" onClick={() => {editando(user.id, user)}}>{svgEdit}</div></th>
                         <th><div className="eliminar" onClick={() =>{borrar(user.id)}}>{svgDelete}</div></th>
                                       

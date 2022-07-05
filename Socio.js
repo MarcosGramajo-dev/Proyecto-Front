@@ -1,88 +1,69 @@
 import React , {useState} from 'react'
 import '../Styles/NuevoUsuario.css'
 
-function Socio() {
-    const socios = [
-        {
-          nombre: "Marcos Gramajo",
-          telefono: 3814675299,
-          direccion: "Av. Juan B. Justo 2649" 
-        },
-        {
-          nombre: "Isabel Mateos",
-          telefono: 3816342952,
-          direccion: "Cl. Jordi, 6, Casa 1" 
-        },
-        {
-          nombre: "Maria Piedad Caamaño",
-          telefono: 3815606219,
-          direccion: "Vereda Ordoñez, 488, Piso 49" 
-        },
-        {
-          nombre: "Jose Alejandro Borrego",
-          telefono: 3813418914,
-          direccion: "Cl. Patricia Márquez, Apto 83" 
-        },
-        {
-          nombre: "Roman Rivera",
-          telefono: 3815875313,
-          direccion: "Cl. Carbajal, Apto 69" 
-        }
-      ]
+export default function Socio({socios, usuarios, añadir}) {
 
-    if(localStorage.getItem("socio")){
-        console.log("existe")
-    }
+    const [nombre, setNombre] = useState('')
+    const [libro, setLibro] = useState('')
 
-    else{
-        localStorage.setItem("socios", JSON.stringify(socios))
-    }
-
-    let [socio, setSocio] = useState([])
-
-    let [className, setClassName] = useState("formulario-desactive")
+  const pacu = socios.filter(el => nombre === el.nombre) // sacar el objeto este y crear uno nuevo con el dato de Nombre y Libro, al objeto que sacamos de aqui lo pasamos a añadir
+  
+  
+  console.log(pacu)
+  function ñandu(e){
+    e.preventDefault();
+    const dorado = {nombre, libro}
+    añadir(dorado)
+    setNombre('')
+    setLibro('')
     
-    function visible(e){
-
-      e.preventDefault();
-
-      if(className === "formulario-active"){
-        setClassName("formulario-desactive")
-
-      }
-      else{
-        setClassName("formulario-active")
-      }
-    }
-
-    function cargar(e){
-      e.preventDefault();
-
-      visible(e);
-    }
+  }
 
 
-
-    return (
+    const [className, setClassName] = useState("formulario-desactive")
+    
+        function visible(e){
+          e.preventDefault();
+          if(className === "formulario-active"){
+            setClassName("formulario-desactive")
+          }
+          else{
+            setClassName("formulario-active")
+          }
+        }
+        function cargar(e){
+          e.preventDefault();
+          visible(e);
+        }
+      
+      return (
         <div className="contenedor">
           
-            <form className={className}>
+            <form className={className} onSubmit={ñandu}>
               <div>
-
-              <button className="close-1" onClick={visible}>X</button>
 
                 <h3>CARGAR PRESTAMOS DE SOCIO</h3>
 
-                <label htmlFor="nombreSocio">Nombre de socio</label>
-                <input className="input-success" type="select" id="nombreSocio" name="nombreSocio"></input>
+                <label htmlFor="nombreSocio">Nombre de socio</label>               
+                   <select id='nombreSocio' value={nombre} required onChange={(e) => setNombre(e.target.value)}>
+                        <option>{''}</option>
+                        {socios.map(el =>
+                          <option key={crypto.randomUUID()} value={el.nombre}>{el.nombre}</option>
+                          )}
+                    </select>
                 <br/>
                 <label htmlFor="libro">Titulo del Libro</label>
-                <input  className="input-invalido"id="libro" name="libro"></input>
+                          <select id="libro" value={libro} required onChange={e => setLibro(e.target.value)}>
+                              <option>{''}</option>
+                              {usuarios.map(el => <option key={crypto.randomUUID()}>{el.libro}</option>)}
+                          </select>
+
+
                 <br/>
                 <label htmlFor="date1">Fecha de Devolucion</label>
                 <input id="date1" name="date1" type="date" className="date input-invalido"></input>
                 <br/>
-                <input  className="input-button" type="submit" value="Agregar" onClick={cargar}></input>
+                <input  className="input-button" type="submit" value="Agregar"></input>
 
 
               </div>
@@ -91,5 +72,3 @@ function Socio() {
 
     );
   }
-  
-  export default Socio;
