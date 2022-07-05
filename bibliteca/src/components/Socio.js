@@ -1,97 +1,64 @@
 import React , {useState} from 'react'
 import '../Styles/NuevoUsuario.css'
+import '../Styles/Socio.css'
+import '../Styles/Responsive.css'
 
-function Socio() {
-    const socios = [
-        {
-          nombre: "Marcos Gramajo",
-          telefono: 3814675299,
-          direccion: "Av. Juan B. Justo 2649" 
-        },
-        {
-          nombre: "Isabel Mateos",
-          telefono: 3816342952,
-          direccion: "Cl. Jordi, 6, Casa 1" 
-        },
-        {
-          nombre: "Maria Piedad Caamaño",
-          telefono: 3815606219,
-          direccion: "Vereda Ordoñez, 488, Piso 49" 
-        },
-        {
-          nombre: "Jose Alejandro Borrego",
-          telefono: 3813418914,
-          direccion: "Cl. Patricia Márquez, Apto 83" 
-        },
-        {
-          nombre: "Roman Rivera",
-          telefono: 3815875313,
-          direccion: "Cl. Carbajal, Apto 69" 
-        }
-      ]
+export default function Socio({socios, usuarios, añadir}) {
 
-    if(localStorage.getItem("socio")){
-        console.log("existe")
-    }
+    //const [seleccion, setSeleccion] = useState('')
+    const [nombre, setNombre] = useState('')
+    //const [libro, setLibro] = useState()
 
-    else{
-        localStorage.setItem("socios", JSON.stringify(socios))
-    }
+    const elegido = socios.filter(el => el.name === nombre)
 
-    let [socio, setSocio] = useState([])
+  function ñandu(e){
+    e.preventDefault();
+    añadir(elegido)
+  }
 
-    let [className, setClassName] = useState("formulario-desactive")
+
+    console.log(nombre)
+
+    const [className, setClassName] = useState("formulario-desactive")
     
-    function visible(e){
-
-      e.preventDefault();
-
-      if(className === "formulario-active"){
-        setClassName("formulario-desactive")
-
-      }
-      else{
-        setClassName("formulario-active")
-      }
-    }
-
-    function cargar(e){
-      e.preventDefault();
-
-      visible(e);
-    }
-
-
-
-    return (
+        function visible(e){
+          e.preventDefault();
+          if(className === "formulario-active"){
+            setClassName("formulario-desactive")
+          }
+          else{
+            setClassName("formulario-active")
+          }
+        }
+        function cargar(e){
+          e.preventDefault();
+          visible(e);
+        }
+      
+      return (
         <div className="contenedor">
           <button onClick={visible} className="select">Cargar Socio</button>
-          
-            <form className={className}>
-              <div>
-
+            <form className={className} onSubmit={ñandu}>
+              <div className="conteinerSocio">
               <button className="close-1" onClick={visible}>X</button>
-
                 <h3>CARGAR PRESTAMOS DE SOCIO</h3>
 
-                <label htmlFor="nombreSocio">Nombre de socio</label>
-                <input className="input-success" id="nombreSocio" name="nombreSocio"></input>
-
+                <label htmlFor="nombreSocio">Nombre de socio</label>               
+                   <select id='nombreSocio' value={nombre} onChange={(e) => setNombre(e.target.value)}>
+                        {socios.map(el =>
+                          <option key={el.id} value={el.nombre}>{el.nombre}</option>
+                        )}
+                    </select>
                 <label htmlFor="libro">Titulo del Libro</label>
-                <input  className="input-invalido"id="libro" name="libro"></input>
-
+                          <select id="libro">
+                              {usuarios.map(el => <option>{el.libro}</option>)}
+                          </select>
                 <label htmlFor="date1">Fecha de Devolucion</label>
                 <input id="date1" name="date1" type="date" className="date input-invalido"></input>
-
                 <input  className="input-button" type="submit" value="Agregar" onClick={cargar}></input>
-
-                <span className="span-invalido">Por favor complete todos los campos.</span>
-
               </div>
             </form>
         </div>
 
     );
   }
-  
-  export default Socio;

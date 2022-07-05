@@ -6,7 +6,7 @@
 
 table{
     border-collapse: collapse;
-    width: 800px;
+    width: 1000px;
     height: 300px;
 
 }
@@ -42,18 +42,19 @@ table thead tr{
 }
 
 table thead th{
-    width: 25px;
+    width: 2%;
 }
 
 table td{
     padding: 5px 10px;
     height: auto;
     margin: auto;
-    width: 180px;
+    width: 15%;
     word-wrap: break-word;
 }
 
 table th{
+    width: 2%;
     padding: 5px;
     height: 25px;
     margin: auto;
@@ -64,6 +65,7 @@ tbody tr{
     margin-bottom: 5px;
     background-color: #c5c4c4;
     border-radius: 10px;
+    padding-right: 10px;
 }
 
 tbody tr:nth-child(odd){
@@ -76,7 +78,6 @@ tbody tr:nth-child(odd){
 
 
 .editar{
-    background-color: #556b2f;
     border-radius: 50px;
     width: 25px;
     height: 25px;
@@ -85,15 +86,14 @@ tbody tr:nth-child(odd){
     align-items: center;
     margin: auto;
     color: #fff;
+    padding: 0;
 }
 
 .editar:hover{
-    background-color: #718a47;
     cursor: pointer;
 }
 
 .eliminar{
-    background-color: #8b0000;
     border-radius: 50px;
     width: 25px;
     height: 25px;
@@ -102,12 +102,19 @@ tbody tr:nth-child(odd){
     align-items: center;
     color: #fff;
     margin: auto;
+    padding: 0;
 }
 
 .eliminar:hover{
-    background-color: #b12020;
-
     cursor: pointer;
+}
+
+.img-alert{
+    width: 100px;
+}
+
+.img-submit{
+    width: 80px;
 }
 
 .conteiner-modal-delete{
@@ -230,42 +237,45 @@ tbody tr:nth-child(odd){
     width: 100px;
 }
 
-@media (max-width: 1050px) {
-    *{
-        font-size: 15px;
+@media (max-width: 800px){
+    .eliminar{
+        width: 20px;
+        padding: 0;
     }
 
-    .body{
-        width: 800px;
+    .editar{
+        width: 20px;
+        padding: 0;
+    }
+}
+
+@media (max-width: 700px){
+    *{
+        font-size: 13;
+    }
+    .eliminar{
+        width: 20px;
+        padding: 0;
+    }
+
+    .editar{
+        width: 20px;
+        padding: 0;
+    }
+}
+
+@media (max-width: 500px){
+    .eliminar{
+        width: 18px;
+        padding: 0;
+    }
+
+    .editar{
+        width: 18px;
+        padding: 0;
     }
 
     table td{
-        width: 100px;
-    }
-
-    thead th{
-        width: 70px;
-    }
-
-    .contenedor3{
-        width: 100%;
-    }
-
-    table{
-        border-collapse: collapse;
-        width: 100%;
-        height: 300px;
-    
-    }
-    
-    thead{
-        color: #fff;
-        font-weight: bold;
-    }
-    
-    tbody{
-        display: block;
-        overflow-y: scroll;
-        height: 500px;
+        padding: 0;
     }
 }
